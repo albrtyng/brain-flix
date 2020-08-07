@@ -17,7 +17,8 @@ const VideoPlayerComponent = () => {
           />
         </div>
         <div className='player__control player__control--progress'>
-          <progress value="0" max="100"></progress>
+          <progress value='0' max='100'></progress>
+          <p className='player__time'>0:00 / 0:42</p>
         </div>
         <div className='player__control player__control--fsvol'>
           <img

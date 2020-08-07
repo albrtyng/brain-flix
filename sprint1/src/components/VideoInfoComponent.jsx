@@ -11,10 +11,12 @@ const VideoInfoComponent = () => {
         <h3 className='video-info__author'>By Red Cow</h3>
         <p className='video-info__timestamp'>12/18/2018</p>
       </div>
-      <img className='video-info__icon' src={ViewsIcon} alt='The views icon' />
-      <p className='video-info__count'>1,001,023</p>
-      <img className='video-info__icon' src={LikesIcon} alt='The likes icon' />
-      <p className='video-info__count'>110,985</p>
+      <div className='video-info__third-row'>
+        <img className='video-info__icon' src={ViewsIcon} alt='The views icon' />
+        <p className='video-info__count'>1,001,023</p>
+        <img className='video-info__icon' src={LikesIcon} alt='The likes icon' />
+        <p className='video-info__count'>110,985</p>
+      </div>
       <p className='video-info__desc'>
         On a gusty day in Southern Utah, a group of 25
         daring mountain bikers blew the doors off what is
