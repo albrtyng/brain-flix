@@ -6,13 +6,40 @@ body {
   font-size: 16px;
 }
 
+.App {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 1rem;
+
+    @include tablet {
+      padding: 0 1.5rem;
+    }
+
+    @include desktop {
+      padding: 0 5rem;
+      flex-direction: row;
+    }
+  }
+
+  &__left {
+    @include desktop {
+      width: 44.5rem;
+    }
+  }
+}
 .video-info {
   @include flex($fw: wrap, $jc: space-between, $bx: border-box);
   width: 100%;
-  padding: 2rem 1rem 2.5rem 1rem;
+  padding: 2rem 0 2.5rem 0;
 
   @include tablet {
-    padding: 3rem 1.5rem 4rem 1.5rem;
+    padding: 3rem 0 4rem 0;
+  }
+
+  @include desktop {
+    padding: 3rem 0 1.5rem 0;
   }
 
   &__title {
@@ -27,6 +54,10 @@ body {
     @include tablet {
       width: 50%;
     }
+
+    @include desktop {
+      width: 50%;
+    }
   }
 
   &__third-row {
@@ -34,6 +65,11 @@ body {
     width: 100%;
 
     @include tablet {
+      @include flex($jc: flex-end);
+      width: 50%;
+    }
+
+    @include desktop {
       @include flex($jc: flex-end);
       width: 50%;
     }
@@ -46,12 +82,20 @@ body {
     @include tablet {
       margin: 1.5rem .5rem 1.5rem 0;
     }
+
+    @include desktop {
+      margin: 1.5rem .5rem 1.5rem 0;
+    }
   }
 
   &__icon {
     margin: 0 .5rem 1.5rem 0;
 
     @include tablet {
+      margin: 0 .5rem 0 0;
+    }
+
+    @include desktop {
       margin: 0 .5rem 0 0;
     }
   }
@@ -63,23 +107,28 @@ body {
       margin: 0 1.5rem 0 0;
       align-self: center;
     }
+
+    @include desktop {
+      margin: 0 1.5rem 0 0;
+      align-self: center;
+    }
   }
 
   &__desc {
     margin: 0;
     padding: 1.5rem 0 0 0;
     border-top: 1px solid $mercury;
+
+    @include desktop {
+      width: 100%;
+      padding-right: 10rem;
+    }
   }
 }
 
 .comments {
-  padding: 0 1rem;
   box-sizing: border-box;
   width: 100%;
-
-  @include tablet {
-    padding: 0 1.5rem;
-  }
 
   &__count {
     margin: 0 0 2rem 0;
@@ -90,6 +139,10 @@ body {
   border-bottom: 1px solid $mercury;
 
   @include tablet {
+    @include flex($fw: wrap, $ai: flex-start, $bx: box-sizing);
+  }
+
+  @include desktop {
     @include flex($fw: wrap, $ai: flex-start, $bx: box-sizing);
   }
 
@@ -125,6 +178,12 @@ body {
       width: 27.5rem;
     }
 
+    @include desktop {
+      flex-grow: 0;
+      height: 3rem;
+      width: 25.5rem;
+    }
+
     &::placeholder {
       color: $silver
     }
@@ -136,12 +195,16 @@ body {
   }
 }
 .comment {
-  @include flex($jc: flex-end, $fw: wrap, $bx: box-sizing);
+  @include flex($fw: wrap, $bx: box-sizing);
   width: 100%;
   border-bottom: 1px solid $mercury;
   padding: 1.5rem 0;
 
   @include tablet {
+    @include flex($fw: wrap, $bx: box-sizing);
+  }
+
+  @include desktop {
     @include flex($fw: wrap, $bx: box-sizing);
   }
 
@@ -156,21 +219,21 @@ body {
 
   &__author {
     display: inline-block;
-    flex-grow: 1;
-    margin: 0;
-
-    @include tablet {
-      flex-grow: 0;
-    }
+    margin: 0 1rem 0 0;
   }
 
   &__timestamp {
     display: inline-block;
     margin: 0;
+    flex-grow: 1;
+    text-align: right;
 
     @include tablet {
-      flex-grow: 1;
-      margin: 0 0 0 0.75rem;
+      text-align: left;
+    }
+
+    @include desktop {
+      text-align: left;
     }
   }
 
@@ -179,6 +242,11 @@ body {
     margin: 0;
 
     @include tablet {
+      padding-right: calc(100% - 39rem);
+      margin-left: 3.5rem;
+    }
+
+    @include desktop {
       width: 39rem;
       margin-left: 3.5rem;
     }
@@ -203,6 +271,12 @@ body {
       width: 9.6875rem;
       margin: 0 2.5rem 1.5rem 1rem;
     }
+
+    @include desktop {
+      flex-grow: 0;
+      width: 9.6875rem;
+      margin: 0 2rem 1.5rem 1rem;
+    }
   }
 
   &--upload {
@@ -213,6 +287,11 @@ body {
       width: 200px;
       margin: 0 1.5rem 0 1.5rem;
     }
+
+    @include desktop {
+      width: 200px;
+      margin: 0 1.5rem 0 1.5rem;
+    }
   }
 }
 
@@ -220,6 +299,10 @@ body {
   @include flex($fd: column, $bx: border-box);
   padding: 0 1rem;
   width: 100%;
+
+  @include desktop {
+    border-left: 2px solid $mercury;
+  }
 
   &__next {
     color: $silver;
@@ -270,6 +353,13 @@ body {
     height: 80px;
     padding: 0 1.5rem;
   }
+
+  @include desktop {
+    @include flex($ai: center, $bx: border-box);
+    height: 80px;
+    padding: 0 3.75rem;
+  }
+
   &__logo {
     height: 3rem;
     width: 100%;
@@ -277,6 +367,10 @@ body {
     padding: .5rem 0;
 
     @include tablet {
+      width: 7.75rem;
+    }
+    
+    @include desktop {
       width: 7.75rem;
     }
   }
@@ -289,6 +383,11 @@ body {
     @include tablet {
       flex-grow: 1;
       margin-left: 10.5625rem;
+    }
+
+    @include desktop {
+      flex-grow: 1;
+      margin-left: 31.8125rem;
     }
   }
 
@@ -318,26 +417,46 @@ body {
     width: 3rem;
     margin: .5rem 0 1rem 0;
     object-fit: cover;
+
+    @include tablet {
+      margin: 0;
+      align-self: center;
+    }
+
+    @include desktop {
+      margin: 0;
+      align-self: center;
+    }
   }
 }
 
 .player {
   @include flex($ai: flex-end, $jc: center, $bx: border-box);
   position: relative;
-  width: 100%;
+  height: 11.4375rem;
+  background-color: black;
 
   @include tablet {
+    height: 25rem;
     padding: 0 2rem;
-    background-color: black;
+  }
+
+  @include desktop {
+    height: 33.75rem;
+    padding: 0 5rem;
   }
 
   &__time {
     color: white;
     margin: 0 0 0 1rem;
+
+    @include mobile {
+      display: none;
+    }
   }
 
   &__video {
-    width: 100%;
+    height: 100%;
     display: block;
   }
 

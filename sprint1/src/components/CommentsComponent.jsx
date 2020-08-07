@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import CommmentFormComponent from './CommentFormComponent';
 import CommentItemComponent from './CommentItemComponent';
 
+import Mohan from '../assets/images/mohan-muruge.jpg';
+
 const CommentsComponent = () => {
   const [comments, setComments] =  useState([
     {
@@ -32,12 +34,29 @@ const CommentsComponent = () => {
     }
   ]);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    event.persist();
+
+    const date = new Date();
+    setComments(comments => [...comments, {
+      author: 'Mohan Muruge',
+      timestamp: date.getTime(),
+      text: event.target.comment.value,
+      src: Mohan
+    }])
+  }
+
   return(
     <div className='comments'>
+      { console.log(comments) }
       <h3 className='comments__count'>{`${comments.length} Comments`}</h3>
-      <CommmentFormComponent />
+      <CommmentFormComponent  handleSubmit={handleSubmit} />
       {
-        comments.map(comment => <CommentItemComponent key={`${comment.author}-${comment.timestamp}`} {...comment}/>)
+        comments.slice(0).reverse().map(comment => <CommentItemComponent
+          key={`${comment.author}-${comment.timestamp}`}
+          {...comment}
+        />)
       }
     </div>
   )

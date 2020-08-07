@@ -13,9 +13,13 @@ const App = () => {
     <div className="App">
       <TitleBarComponent />
       <VideoPlayerComponent />
-      <VideoInfoComponent />
-      <CommentsComponent />
-      <VideoListComponent />
+      <div className='App__container'>
+        <div className='App__left'>
+          <VideoInfoComponent />
+          <CommentsComponent />
+        </div>
+        <VideoListComponent />
+      </div>
     </div>
   );
 }

@@ -3,11 +3,11 @@ import VideoItemComponent from './VideoItemComponent';
 
 const VideoListComponent = () => {
   const [videos, setVideos] = useState([
-    {
-      src: 'video-list-0',
-      title: 'BMX Rampage: 2018 Highlights',
-      author: 'Red Cow'
-    },
+    // {
+    //   src: 'video-list-0',
+    //   title: 'BMX Rampage: 2018 Highlights',
+    //   author: 'Red Cow'
+    // },
     {
       src: 'video-list-1',
       title: 'Become A Travel Pro In One Easy Lesson…',
