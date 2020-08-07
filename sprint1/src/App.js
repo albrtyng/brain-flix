@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import CommentsComponent from './components/CommentsComponent';
+import CommmentFormComponent from './components/CommentFormComponent';
+import TitleBarComponent from './components/TitleBarComponent';
+import VideoInfoComponent from './components/VideoInfoComponent';
+import VideoListComponent from './components/VideoListComponent';
+
+import './styles/App.css';
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TitleBarComponent />
+      <VideoInfoComponent />
+      <CommmentFormComponent />
+      <CommentsComponent />
+      <VideoListComponent />
     </div>
   );
 }
