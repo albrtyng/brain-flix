@@ -51,8 +51,9 @@ const VideoListComponent = () => {
   ]);
 
   return (
-    <div>
-      { videos.map(video => <VideoItemComponent {...video} />) }
+    <div className='videos'>
+      <h3 className='videos__next'>Next video</h3>
+      { videos.map(video => <VideoItemComponent key={video.src} {...video} />) }
     </div>
   )
 }

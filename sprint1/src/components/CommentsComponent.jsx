@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import CommmentFormComponent from './CommentFormComponent';
+import CommentItemComponent from './CommentItemComponent';
 
 const CommentsComponent = () => {
   const [comments, setComments] =  useState([
@@ -9,7 +11,7 @@ const CommentsComponent = () => {
       lives for this and loves to do it every day. Everytime
       I see him I feel instantly happy! He’s definitely my
       favorite ever!`,
-      img: ''
+      src: ''
     },
     {
       author: 'Gary Wong',
@@ -17,7 +19,7 @@ const CommentsComponent = () => {
       text: `Every time I see him shred I feel so motivated
       to get off my couch and hop on my board. He’s so talented!
       I wish I can ride like him one day so I can really enjoy myself!`,
-      img: ''
+      src: ''
     },
     {
       author: 'Micheal Lyons',
@@ -26,25 +28,18 @@ const CommentsComponent = () => {
       everyone started figuring out they were going.
       This is still simply the greatest opening of a
       concert I have EVER witnessed.`,
-      img: ''
+      src: ''
     }
   ]);
 
   return(
-    <>
+    <div className='comments'>
+      <h3 className='comments__count'>{`${comments.length} Comments`}</h3>
+      <CommmentFormComponent />
       {
-        comments.map(comment => {
-          return (
-            <div>
-              {comment.img ? <img src={comment.img} alt={'The user\' profile'}/> : <div></div>}
-              <h3>{comment.author}</h3>
-              <h3>{comment.timestamp}</h3>
-              <p>{comment.text}</p>
-            </div>
-          )
-        })
+        comments.map(comment => <CommentItemComponent key={`${comment.author}-${comment.timestamp}`} {...comment}/>)
       }
-    </>
+    </div>
   )
 }
 
