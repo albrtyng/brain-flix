@@ -1,6 +1,8 @@
+@import './partials/constants';
 @import './partials/mixins';
 
 body {
+  font-family: 'AvenirNext';
   margin: 0;
   width: 100vw;
   font-size: 16px;
@@ -25,7 +27,7 @@ body {
 
   &__left {
     @include desktop {
-      width: 44.5rem;
+      min-width: 44.5rem;
     }
   }
 }
@@ -43,7 +45,17 @@ body {
   }
 
   &__title {
-    margin: 0;
+    @include font-styling(500, $black);
+    @include format-text($lh: 2rem, $fs: 1.5rem);
+
+    @include tablet {
+      @include format-text($lh: 2.75rem, $fs: 1.5rem);
+    }
+
+    @include desktop {
+      @include format-text($lh: 2.75rem, $fs: 2.25rem);
+    }
+
     width: 100%;
   }
 
@@ -75,8 +87,14 @@ body {
     }
   }
 
-  &__author, &__timestamp {
-    margin: 1rem .5rem 2rem 0;
+  &__channel {
+    @include font-styling(300, $black);
+  }
+  &__timestamp {
+    @include font-styling(100, $silver);
+  }
+  &__channel, &__timestamp {
+    @include format-text(1.25rem, 1rem .5rem 2rem 0, .75rem);
     align-self: center;
 
     @include tablet {
@@ -101,7 +119,8 @@ body {
   }
 
   &__count {
-    margin: 0 2rem 1.5rem 0;
+    @include font-styling(100, $black);
+    @include format-text(1.125rem, 0 2rem 1.5rem 0, 0.8125rem);
 
     @include tablet {
       margin: 0 1.5rem 0 0;
@@ -115,12 +134,18 @@ body {
   }
 
   &__desc {
-    margin: 0;
+    @include font-styling(100, $black);
+    @include format-text($lh: 1.125rem, $fs: 0.8125rem);
     padding: 1.5rem 0 0 0;
     border-top: 1px solid $mercury;
+    width: 100%;
+
+    @include tablet {
+      @include format-text($lh: 1.375rem, $fs: 0.875rem);
+    }
 
     @include desktop {
-      width: 100%;
+      @include format-text($lh: 1.375rem, $fs: 0.875rem);
       padding-right: 10rem;
     }
   }
@@ -131,7 +156,8 @@ body {
   width: 100%;
 
   &__count {
-    margin: 0 0 2rem 0;
+    @include font-styling(300, $black);
+    @include format-text(1.375rem, 0 0 2rem 0, 0.875rem);
   }
 }
 .com-form {
@@ -156,14 +182,17 @@ body {
   }
 
   &__label {
+    @include font-styling(100, $silver);
+    @include format-text(1.25rem, 0 0 0 4.125rem, .75rem);
     width: calc(100% - 4.125rem);
     flex-grow: 1;
     text-transform: uppercase;
-    margin-left: 4.125rem;
     align-self: center;
   }
 
   &__comment {
+    @include font-styling(100, $black);
+    font-family: 'AvenirNext';
     box-sizing: border-box;
     border-radius: 4px;
     flex-grow: 1;
@@ -215,47 +244,63 @@ body {
     background-color: $mercury;
     display: inline-block;
     margin-right: 0.875rem;
+    object-fit: cover;
   }
 
   &__author {
+    @include font-styling(300, $black);
+    @include format-text(1.375rem, 0 1rem 0 0, 0.875rem);
     display: inline-block;
-    margin: 0 1rem 0 0;
+
+    @include tablet {
+      @include format-text(1.5rem, 0 1rem 0 0);
+    }
+
+    @include desktop {
+      @include format-text(1.5rem, 0 1rem 0 0);
+    }
   }
 
   &__timestamp {
+    @include font-styling(100, $silver);
+    @include format-text($lh: 1.375rem, $fs: 0.875rem);
     display: inline-block;
-    margin: 0;
     flex-grow: 1;
     text-align: right;
 
     @include tablet {
+      @include format-text(1.5rem, 0 1rem 0 0);
       text-align: left;
     }
 
     @include desktop {
+      @include format-text(1.5rem, 0 1rem 0 0);
       text-align: left;
     }
   }
 
   &__text {
+    @include font-styling(100, $black);
+    @include format-text(1.125rem, 0 0 0 3.5rem, 0.8125rem);
     width: calc(100% - 3.4375rem);
-    margin: 0;
 
     @include tablet {
+      @include format-text(1.375rem, 0 0 0 3.5rem, 0.875rem);
       padding-right: calc(100% - 39rem);
-      margin-left: 3.5rem;
     }
 
     @include desktop {
+      @include format-text(1.375rem, 0 0 0 3.5rem, 0.875rem);
       width: 39rem;
-      margin-left: 3.5rem;
     }
   }
 }
 
 .btn {
+  font-family: inherit;
+  @include font-styling(200, $alabaster);
+  @include format-text($lh: 0.875rem, $fs: 0.875rem);
   background-color: $blue;
-  color: white;
   border: none;
   border-radius: 4px;
   height: 3rem;
@@ -280,8 +325,16 @@ body {
   }
 
   &--upload {
+    @include flex($ai: center, $jc: center, $bx: border-box);
     margin: .5rem 0 1rem 0;
+    padding: 0 0.75rem;
     width: calc(100% - 4rem);
+
+    & :first-child {
+      margin: 0 .75rem 4px 0;
+      width: 15px;
+      height: 15px;
+    }
 
     @include tablet {
       width: 200px;
@@ -297,7 +350,6 @@ body {
 
 .videos {
   @include flex($fd: column, $bx: border-box);
-  padding: 0 1rem;
   width: 100%;
 
   @include desktop {
@@ -305,15 +357,23 @@ body {
   }
 
   &__next {
-    color: $silver;
-    margin: 2.5rem 0;
+    @include font-styling(200, $silver);
+    @include format-text(1.375rem, 2.5rem 0, 0.875rem);
     text-transform: uppercase;
+
+    @include desktop {
+      padding: 0 0 0 1.5rem;
+    }
   }
 }
 .video-item {
   @include flex();
   margin: 0 0 1.5rem 0;
   width: 100%;
+
+  @include desktop {
+    padding: 0 0 0 1.5rem;
+  }
 
   &__right {
     flex-grow: 1;
@@ -328,17 +388,28 @@ body {
   }
 
   &__title {
-    margin: 0 0 1rem 0;
+    @include font-styling(200, $black);
+    @include format-text(1.375rem, 0 0 .25rem 0, 0.8125rem);
     width: 100%;
 
     @include tablet {
+      @include format-text(1.5rem, 0 0 .25rem 0);
       width: 224px;
+    }
+
+    @include desktop {
+      @include format-text(1.5rem, 0 0 .25rem 0);
     }
   }
 
-  &__author {
+  &__channel {
+    @include font-styling(100, $black);
+    @include format-text($lh: 1.125rem, $fs: 0.8125rem);
     width: 100%;
-    margin: 0;
+
+    @include tablet {
+      @include format-text($lh: 1.375rem, $fs: 0.875rem);
+    }
   }
 }
 
@@ -447,6 +518,8 @@ body {
   }
 
   &__time {
+    @include font-styling(100, $black);
+    @include format-text(1.125rem);
     color: white;
     margin: 0 0 0 1rem;
 

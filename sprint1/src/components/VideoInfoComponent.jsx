@@ -3,31 +3,30 @@ import React from 'react';
 import LikesIcon from '../assets/icons/svg/icon-likes.svg';
 import ViewsIcon from '../assets/icons/svg/icon-views.svg';
 
-const VideoInfoComponent = () => {
+const VideoInfoComponent = (props) => {
+  const {
+    title,
+    channel,
+    timestamp,
+    views,
+    likes,
+    description
+  } = props.video;
+
   return (
     <div className='video-info'>
-      <h1 className='video-info__title'>BMX Rampage: 2018 Highlights</h1>
+      <h1 className='video-info__title'>{title}</h1>
       <div className='video-info__second-row'>
-        <h3 className='video-info__author'>By Red Cow</h3>
-        <p className='video-info__timestamp'>12/18/2018</p>
+        <h3 className='video-info__channel'>{`By ${channel}`}</h3>
+        <p className='video-info__timestamp'>{timestamp === '' ? 'Unknown date' : timestamp}</p>
       </div>
       <div className='video-info__third-row'>
         <img className='video-info__icon' src={ViewsIcon} alt='The views icon' />
-        <p className='video-info__count'>1,001,023</p>
+        <p className='video-info__count'>{views === '' ? 0 : views}</p>
         <img className='video-info__icon' src={LikesIcon} alt='The likes icon' />
-        <p className='video-info__count'>110,985</p>
+        <p className='video-info__count'>{likes === '' ? 0 : likes}</p>
       </div>
-      <p className='video-info__desc'>
-        On a gusty day in Southern Utah, a group of 25
-        daring mountain bikers blew the doors off what is
-        possible on two wheels, unleashing some of the
-        biggest moments the sport has ever seen. While
-        mother nature only allowed for one full run before
-        the conditions made it impossible to ride, that was
-        all that was needed for event veteran Kyle Strait,
-        who won the event for the second time -- eight years
-        after his first Red Cow Rampage title
-      </p>
+      <p className='video-info__desc'>{description === '' ? 'No description' : description}</p>
     </div>
   )
 }

@@ -25,7 +25,6 @@
 // TYPOGRAPHY
 
 @mixin font-styling($fw, $c: $black) {
-  font-family: "AvenirNext"; //TODO: FIX
   font-weight: $fw;
   color: $c;
 }
