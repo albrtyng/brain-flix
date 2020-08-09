@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
+// The initial state of the video page
 const initialState = {
   videos: [
     {

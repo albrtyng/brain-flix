@@ -1,0 +1,101 @@
+@import '../partials/constants';
+@import '../partials/mixins';
+
+/*
+  Styling for the main video, player controls
+*/
+
+.player {
+  @include flex($ai: flex-end, $jc: center, $bx: border-box);
+  position: relative;
+  height: 11.4375rem;
+  background-color: black;
+
+  @include tablet {
+    height: 25rem;
+    padding: 0 2rem;
+  }
+
+  @include desktop {
+    height: 33.75rem;
+    padding: 0 5rem;
+  }
+
+  &__time {
+    @include font-styling(100, $black);
+    @include format-text(1.125rem);
+    color: white;
+    margin: 0 0 0 1rem;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__video {
+    height: 100%;
+    display: block;
+  }
+
+  &__controls {
+    @include flex($jc: space-between, $bx: border-box);
+    padding: 0 1rem .5rem 1rem;
+    position: absolute;
+    width: 100%;
+
+    @include tablet {
+      padding: 0 0 1rem 0;
+      width: calc(100% - 6rem);
+    }
+  }
+
+  &__control {
+    @include flex($ai: center, $jc: center);
+    background-color: $black;
+    height: 2rem;
+    border-radius: 4px;
+    opacity: 75%;
+
+    &--play {
+      width: 3.125rem;
+    }
+
+    &--progress {
+      @include flex($ai: center);
+      width: 50%;
+      flex-grow: 1;
+      margin: 0 .5rem;
+      padding: 0 16px;
+      box-sizing: border-box;
+
+      @include tablet {
+        width: 32.4375rem;
+      }
+
+      & :first-child {
+        flex-grow: 1;
+        height: 5px;
+      }
+
+      & :first-child[value] {
+        appearance: none;
+      }
+
+      & :first-child[value]::-webkit-progress-bar {
+        border-radius: 2.5px;
+        background-color: black;
+      }
+
+      & :first-child[value]::-webkit-progress-value {
+        border-radius: 2.5px;
+        background-color: $blue;
+      }
+    }
+
+    &--fsvol {
+      @include flex($jc: space-around, $bx: border-box);
+      padding: 0 .5rem;
+      width: 5rem;
+    }
+  }
+}

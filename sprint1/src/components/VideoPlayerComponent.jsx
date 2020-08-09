@@ -5,6 +5,7 @@ import FullscreenIcon from '../assets/icons/svg/icon-fullscreen.svg';
 import PlayIcon from '../assets/icons/svg/icon-play.svg';
 import VolumeIcon from '../assets/icons/svg/icon-volume.svg';
 
+// The player controls for the selected video
 const VideoPlayerComponent = (props) => {
   const {
     duration,
@@ -13,6 +14,8 @@ const VideoPlayerComponent = (props) => {
 
   return (
     <div className='player'>
+
+      {/* The controls */}
       <div className='player__controls'>
         <div className='player__control player__control--play'>
           <img
@@ -38,6 +41,8 @@ const VideoPlayerComponent = (props) => {
           />
         </div>
       </div>
+
+      {/* The video */}
       <video
         className='player__video'
         poster={require(`../assets/images/${image}.jpg`)}

@@ -2,6 +2,8 @@ import React from 'react';
 
 import Mohan from '../assets/images/mohan-muruge.jpg';
 
+// The form for submitting comments
+
 const CommmentFormComponent = (props) => {
   return (
     <form className='com-form' onSubmit={event => props.handleSubmit(event)}>

@@ -1,7 +1,9 @@
 import React from 'react';
+
 import CommmentFormComponent from './CommentFormComponent';
 import CommentItemComponent from './CommentItemComponent';
 
+// The container wrapping each CommentItemComponent
 const CommentsComponent = (props) => {
   return(
     <div className='comments'>

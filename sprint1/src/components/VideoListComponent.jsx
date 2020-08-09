@@ -1,6 +1,8 @@
 import React from 'react';
+
 import VideoListItemComponent from './VideoListItemComponent';
 
+// The container for the list of suggested videos
 const VideoListComponent = (props) => {
   return (
     <div className='videos'>

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
+// A component for every comment on the page
 const CommentItemComponent = (props) => {
   const [time, setTime] = useState('0 seconds ago');
 
-  useEffect(() => {
+  useEffect(() => { // useEffect to set an update interval for the dynamic timestamp
     const interval = setInterval(() => {
       const msPerMinute = 60000;
       const msPerHour = msPerMinute * 60;
@@ -30,9 +31,9 @@ const CommentItemComponent = (props) => {
   return (
     <div className='comment'>
       {
-      props.src
-        ? <img className='comment__pfp' src={props.src} alt={'The user\'s profile'}/> 
-        : <div className='comment__pfp'></div>
+        props.src
+          ? <img className='comment__pfp' src={props.src} alt={'The user\'s profile'}/> 
+          : <div className='comment__pfp'></div>
       }
       <h3 className='comment__author'>{props.author}</h3>
       <h3 className='comment__timestamp'>{time}</h3>
