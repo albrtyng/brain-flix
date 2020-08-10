@@ -20,7 +20,7 @@ const TitleBarComponent = (props) => {
           className='title-bar__icon'
           src={SearchIcon}
           alt='The search icon'
-        ></img>
+        />
         <input
           className='title-bar__search'
           type='text'
