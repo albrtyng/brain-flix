@@ -1,45 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 
 // A component for every comment on the page
-const CommentItemComponent = (props) => {
-  const [time, setTime] = useState('0 seconds ago');
+class CommentItemComponent extends Component {
+  constructor(props) {
+    super(props);
 
-  useEffect(() => { // useEffect to set an update interval for the dynamic timestamp
-    const interval = setInterval(() => {
+    this.state = {
+      time: '0 seconds ago'
+    }
+  }
+
+  componentDidMount() { // Set an update interval on mount for the dynamic timestamp
+    const { timestamp } = this.props;
+
+    this.timer = setInterval(() => {
       const msPerMinute = 60000;
       const msPerHour = msPerMinute * 60;
       const msPerDay = msPerHour * 24;
 
       const current = new Date();
-      var diff = current.getTime() - props.timestamp;
+      var diff = current.getTime() - timestamp;
 
       if (diff < msPerMinute) {
-        setTime(`${Math.round(diff / 1000)} seconds ago`);
+        this.setState({ time: `${Math.round(diff / 1000)} seconds ago` });
       } else if (diff < msPerHour) {
-        setTime(`${Math.round(diff / msPerMinute)} minutes ago`);
+        this.setState({ time: `${Math.round(diff / msPerMinute)} minutes ago` });
       } else if (diff < msPerDay ) {
-        setTime(`${Math.round(diff / msPerHour )} hours ago`);
+        this.setState({ time: `${Math.round(diff / msPerHour )} hours ago` });
       } else {
-        const date = new Date(props.timestamp);
-        setTime(date.toLocaleDateString('en-ca'));
+        const date = new Date(timestamp);
+        this.setState({ time: date.toLocaleDateString('en-ca') });
       }
     }, 2500);
+  };
 
-    return () => clearInterval(interval);
-  }, [props.timestamp]);
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
 
-  return (
-    <div className='comment'>
-      {
-        props.src
-          ? <img className='comment__pfp' src={props.src} alt={'The user\'s profile'}/> 
-          : <div className='comment__pfp'></div>
-      }
-      <h3 className='comment__author'>{props.author}</h3>
-      <h3 className='comment__timestamp'>{time}</h3>
-      <p className='comment__text'>{props.text}</p>
-    </div>
-  )
+  render() {
+    const {
+      src,
+      author,
+      text
+    } = this.props;
+
+    return (
+      <div className='comment'>
+        {
+          src
+            ? <img className='comment__pfp' src={src} alt={'The user\'s profile'}/> 
+            : <div className='comment__pfp'></div>
+        }
+        <h3 className='comment__author'>{author}</h3>
+        <h3 className='comment__timestamp'>{this.state.time}</h3>
+        <p className='comment__text'>{text}</p>
+      </div>
+    )
+  }
 }
 
 export default CommentItemComponent;
