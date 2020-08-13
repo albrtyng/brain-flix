@@ -1,0 +1,39 @@
+$desktop-break: 1200px;
+$tablet-break: 768px;
+$mobile-break: 320px;
+
+$alabaster: #FAFAFA;
+$black: #323232;
+$blue: #0095FF;
+$dark-blue: #0065AD;
+$mercury: #E1E1E1;
+$silver: #AFAFAF;
+
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/fonts/\
+avenir-next-pro-lt/avenirnextltpro-regular.otf")
+    format("opentype");
+  font-weight: 100;
+};
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/fonts/\
+avenir-next-pro-lt/avenirnextltpro-medium.otf")
+    format("opentype");
+  font-weight: 200;
+};
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/fonts/\
+avenir-next-pro-lt/avenirnextltpro-demi.otf")
+    format("opentype");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../../assets/fonts/\
+avenir-next-pro-lt/avenirnextltpro-bold.otf")
+    format("opentype");
+  font-weight: 500;
+}

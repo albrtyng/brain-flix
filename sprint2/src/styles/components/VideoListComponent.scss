@@ -1,0 +1,74 @@
+@import '../partials/constants';
+@import '../partials/mixins';
+
+/*
+  Styling for the list of video suggestions
+*/
+
+// Styling for the container wrapping the video list items
+.videos {
+  @include flex($fd: column, $bx: border-box);
+  width: 100%;
+
+  @include desktop {
+    border-left: 2px solid $mercury;
+  }
+
+  &__next {
+    @include font-styling(200, $silver);
+    @include format-text(1.375rem, 2.5rem 0, 0.875rem);
+    text-transform: uppercase;
+
+    @include desktop {
+      padding: 0 0 0 1.5rem;
+    }
+  }
+}
+
+// Styling for individual video items
+.video-item {
+  @include flex();
+  margin: 0 0 1.5rem 0;
+  width: 100%;
+
+  @include desktop {
+    padding: 0 0 0 1.5rem;
+  }
+
+  &__right {
+    flex-grow: 1;
+  }
+
+  &__img {
+    height: 4.375rem;
+    width: 7.5rem;
+    border-radius: 4px;
+    margin: 0 1rem 0 0;
+    object-fit: cover;
+  }
+
+  &__title {
+    @include font-styling(200, $black);
+    @include format-text(1.375rem, 0 0 .25rem 0, 0.8125rem);
+    width: 100%;
+
+    @include tablet {
+      @include format-text(1.5rem, 0 0 .25rem 0);
+      width: 224px;
+    }
+
+    @include desktop {
+      @include format-text(1.5rem, 0 0 .25rem 0);
+    }
+  }
+
+  &__channel {
+    @include font-styling(100, $black);
+    @include format-text($lh: 1.125rem, $fs: 0.8125rem);
+    width: 100%;
+
+    @include tablet {
+      @include format-text($lh: 1.375rem, $fs: 0.875rem);
+    }
+  }
+}
