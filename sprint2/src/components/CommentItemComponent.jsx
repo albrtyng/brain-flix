@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 
 // A component for every comment on the page
 class CommentItemComponent extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      time: '0 seconds ago'
-    }
+  state = {
+    time: '0 seconds ago'
   }
 
   componentDidMount() { // Set an update interval on mount for the dynamic timestamp
@@ -24,9 +20,11 @@ class CommentItemComponent extends Component {
       if (diff < msPerMinute) {
         this.setState({ time: `${Math.round(diff / 1000)} seconds ago` });
       } else if (diff < msPerHour) {
-        this.setState({ time: `${Math.round(diff / msPerMinute)} minutes ago` });
+        const minutes = Math.round(diff / msPerMinute);
+        this.setState({ time: `${minutes === 1 ? 'a minute' : `${minutes} minutes`} ago` });
       } else if (diff < msPerDay ) {
-        this.setState({ time: `${Math.round(diff / msPerHour )} hours ago` });
+        const hours = Math.round(diff / msPerHour);
+        this.setState({ time: `${hours === 1 ? 'an hour': `${hours} hours`} ago` });
       } else {
         const date = new Date(timestamp);
         this.setState({ time: date.toLocaleDateString('en-ca') });
@@ -34,7 +32,7 @@ class CommentItemComponent extends Component {
     }, 2500);
   };
 
-  componentWillUnmount() {
+  componentWillUnmount() { // clearInterval to stop firing after unmount
     clearInterval(this.timer);
   }
 

@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import CommmentFormComponent from './CommentFormComponent';
 import CommentItemComponent from './CommentItemComponent';
 
+import '../styles/components/CommentsComponent.scss';
+
 // The container wrapping each CommentItemComponent
 class CommentsComponent extends Component {
   render() {

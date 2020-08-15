@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Thumbnail from '../assets/images/video-list-5.jpg';
 
-class UploadComponent extends Component {
+class UploadPage extends Component {
   render() {
     return (
       <div className='upload'>
@@ -40,4 +40,4 @@ class UploadComponent extends Component {
   }
 }
 
-export default UploadComponent;
+export default UploadPage;

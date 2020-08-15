@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import VideoListItemComponent from './VideoListItemComponent';
 
+import '../styles/components/VideoListComponent.scss';
+
 // The container for the list of suggested videos
 class VideoListComponent extends Component {
   render () {

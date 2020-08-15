@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import  { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import TitleBarComponent from './components/TitleBarComponent';
-import UploadComponent from './components/UploadComponent';
-import VideoComponent from './components/VideoComponent';
+import UploadPage from './pages/UploadPage';
+import VideoPage from './pages/VideoPage';
 
 import './styles/App.scss';
 
@@ -16,9 +16,9 @@ class App extends Component {
         <Router>
           <TitleBarComponent image={Mohan}/>
           <Switch>
-            <Route path='/upload' component={UploadComponent} />
-            <Route path='/videos/:id' component={VideoComponent} />
-            <Route exact path='/videos' component={VideoComponent} />
+            <Route path='/upload' component={UploadPage} />
+            <Route path='/videos/:id' component={VideoPage} />
+            <Route exact path='/videos' component={VideoPage} />
           </Switch>
         </Router>
       </div>

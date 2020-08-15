@@ -1,0 +1,28 @@
+@import '../partials/constants';
+@import '../partials/mixins';
+
+//Styling for the video page
+.video {
+  @include flex($jc: center, $fw: wrap);
+  width: 100vw;
+
+  &__container {
+    @include flex($fd: column, $jc: center);
+    padding: 0 1rem;
+
+    @include tablet {
+      padding: 0 1.5rem;
+    }
+
+    @include desktop {
+      padding: 0 5rem;
+      flex-direction: row;
+    }
+  }
+
+  &__left {
+    @include desktop {
+      max-width: 44.5rem;
+    }
+  }
+}

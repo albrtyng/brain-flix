@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
+import '../styles/components/VideoPlayerComponent.scss'
+
 import FullscreenIcon from '../assets/icons/svg/icon-fullscreen.svg';
-// import PauseIcon from '../assets/icons/svg/icon-pause.svg';
 import PlayIcon from '../assets/icons/svg/icon-play.svg';
 import VolumeIcon from '../assets/icons/svg/icon-volume.svg';
 

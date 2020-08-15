@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import '../styles/components/VideoInfoComponent.scss';
+
 import LikesIcon from '../assets/icons/svg/icon-likes.svg';
 import ViewsIcon from '../assets/icons/svg/icon-views.svg';
 
