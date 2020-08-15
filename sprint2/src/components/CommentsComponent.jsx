@@ -16,8 +16,8 @@ class CommentsComponent extends Component {
         <h3 className='comments__count'>{`${comments.length} Comments`}</h3>
         <CommmentFormComponent  handleSubmit={handleSubmit} />
         {
-          comments.slice(0).reverse().map(comment => <CommentItemComponent
-            key={`${comment.author}-${comment.timestamp}`}
+          comments.slice(0).map(comment => <CommentItemComponent
+            key={comment.id}
             {...comment}
           />)
         }

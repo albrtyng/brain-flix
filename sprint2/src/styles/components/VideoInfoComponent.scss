@@ -19,7 +19,7 @@
   }
 
   &__title {
-    @include font-styling(500, $black);
+    @include font-styling(700, $black);
     @include format-text($lh: 2rem, $fs: 1.5rem);
 
     @include tablet {
@@ -62,13 +62,13 @@
   }
 
   &__channel {
-    @include font-styling(300, $black);
+    @include font-styling(600, $black);
   }
   &__timestamp {
-    @include font-styling(100, $silver);
+    @include font-styling(400, $silver);
   }
   &__channel, &__timestamp {
-    @include format-text(1.25rem, 1rem .5rem 2rem 0, .75rem);
+    @include format-text(1.125rem, 0rem 2rem 1.5rem 0, .8125rem);
     align-self: center;
 
     @include tablet {
@@ -93,7 +93,7 @@
   }
 
   &__count {
-    @include font-styling(100, $black);
+    @include font-styling(400, $black);
     @include format-text(1.125rem, 0 2rem 1.5rem 0, 0.8125rem);
 
     @include tablet {
@@ -108,7 +108,7 @@
   }
 
   &__desc {
-    @include font-styling(100, $black);
+    @include font-styling(400, $black);
     @include format-text($lh: 1.125rem, $fs: 0.8125rem);
     padding: 1.5rem 0 0 0;
     border-top: 1px solid $mercury;

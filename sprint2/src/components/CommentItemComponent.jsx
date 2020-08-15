@@ -41,8 +41,8 @@ class CommentItemComponent extends Component {
   render() {
     const {
       src,
-      author,
-      text
+      name,
+      comment
     } = this.props;
 
     return (
@@ -52,9 +52,9 @@ class CommentItemComponent extends Component {
             ? <img className='comment__pfp' src={src} alt={'The user\'s profile'}/> 
             : <div className='comment__pfp'></div>
         }
-        <h3 className='comment__author'>{author}</h3>
+        <h3 className='comment__author'>{name}</h3>
         <h3 className='comment__timestamp'>{this.state.time}</h3>
-        <p className='comment__text'>{text}</p>
+        <p className='comment__text'>{comment}</p>
       </div>
     )
   }

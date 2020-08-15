@@ -15,6 +15,7 @@ class VideoInfoComponent extends Component {
       description
     } = this.props.video;
 
+    const date = timestamp ? new Date(timestamp).toLocaleDateString() : 'Unknown date';
     return (
       <div className='video-info'>
 
@@ -22,17 +23,17 @@ class VideoInfoComponent extends Component {
 
         <div className='video-info__second-row'>
           <h3 className='video-info__channel'>{`By ${channel}`}</h3>
-          <p className='video-info__timestamp'>{timestamp === '' ? 'Unknown date' : timestamp}</p>
+          <p className='video-info__timestamp'>{date}</p>
         </div>
 
         <div className='video-info__third-row'>
           <img className='video-info__icon' src={ViewsIcon} alt='The views icon' />
-          <p className='video-info__count'>{views === '' ? 0 : views}</p>
+          <p className='video-info__count'>{views ? views : 0}</p>
           <img className='video-info__icon' src={LikesIcon} alt='The likes icon' />
-          <p className='video-info__count'>{likes === '' ? 0 : likes}</p>
+          <p className='video-info__count'>{likes ? likes: 0}</p>
         </div>
 
-        <p className='video-info__desc'>{description === '' ? 'No description' : description}</p>
+        <p className='video-info__desc'>{description ? description: 'No description'}</p>
       </div>
     )
   }

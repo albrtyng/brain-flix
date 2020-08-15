@@ -15,7 +15,7 @@ class CommmentFormComponent extends Component {
           alt={'The user\'s profile'}
         />
         <textarea
-          className='com-form__comment'
+          className='text-input text-input--comment'
           name='comment'
           placeholder='Add a new comment'
           required

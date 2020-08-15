@@ -27,7 +27,7 @@ class VideoPlayerComponent extends Component {
           </div>
           <div className='player__control player__control--progress'>
             <progress value='0' max='100'></progress>
-            <p className='player__time'>{ `0:00 / ${duration === '' ? '0:00' : duration}` }</p>
+            <p className='player__time'>{ `0:00 / ${duration ? duration : '0:00'}` }</p>
           </div>
           <div className='player__control player__control--fsvol'>
             <img
@@ -46,7 +46,7 @@ class VideoPlayerComponent extends Component {
         {/* The video */}
         <video
           className='player__video'
-          poster={require(`../assets/images/${image}.jpg`)}
+          poster={image}
         >
         </video>
       </div>

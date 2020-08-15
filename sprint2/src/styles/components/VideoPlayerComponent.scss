@@ -10,6 +10,7 @@
   position: relative;
   height: 11.4375rem;
   background-color: black;
+  width: 100%;
 
   @include tablet {
     height: 25rem;
@@ -22,7 +23,7 @@
   }
 
   &__time {
-    @include font-styling(100, $black);
+    @include font-styling(400, $black);
     @include format-text(1.125rem);
     color: white;
     margin: 0 0 0 1rem;

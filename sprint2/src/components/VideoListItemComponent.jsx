@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 // A component for a suggested video item
 class VideoListItemComponent extends Component {
   render() {
     const {
+      id,
       image,
       title,
       channel
     } = this.props;
 
     return (
-      <div className='video-item'>
+      <Link to={`/videos/${id}`} className='video-item'>
 
         {/* The video thumbnail */}
         <img
           className='video-item__img'
-          src={require(`../assets/images/${image}.jpg`)}
+          src={image}
           alt='The video thumbnail' />
 
         {/* The video details */}
@@ -23,7 +25,7 @@ class VideoListItemComponent extends Component {
           <h3 className='video-item__title'>{title}</h3>
           <p className='video-item__channel'>{channel}</p>
         </div>
-      </div>
+      </Link>
     )
   }
 }

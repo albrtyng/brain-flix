@@ -2,6 +2,7 @@
 @import './partials/mixins';
 
 @import './components/CommentsComponent.scss';
+@import './components/UploadComponent.scss';
 @import './components/VideoInfoComponent.scss';
 @import './components/VideoListComponent.scss';
 @import './components/VideoPlayerComponent.scss';
@@ -19,10 +20,11 @@ body {
 }
 
 .App {
+  @include flex($jc: center, $fw: wrap);
+  width: 100vw;
+
   &__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    @include flex($fd: column, $jc: center);
     padding: 0 1rem;
 
     @include tablet {
@@ -37,7 +39,7 @@ body {
 
   &__left {
     @include desktop {
-      min-width: 44.5rem;
+      max-width: 44.5rem;
     }
   }
 }
@@ -45,7 +47,7 @@ body {
 // Styling for the comment and upload buttons
 .btn {
   font-family: inherit;
-  @include font-styling(200, $alabaster);
+  @include font-styling(600, $alabaster);
   @include format-text($lh: 0.875rem, $fs: 0.875rem);
   background-color: $blue;
   border: none;
@@ -75,6 +77,21 @@ body {
     }
   }
 
+  &--publish {
+    width: 100%;
+    margin: 0 0 1.5rem 0;
+
+    @include tablet {
+      width: 10rem;
+      margin: 2.25rem 0 0 3rem;
+    }
+
+    @include desktop {
+      width: 10rem;
+      margin: 2.25rem 0 0 3rem;
+    }
+  }
+
   &--upload {
     @include flex($ai: center, $jc: center, $bx: border-box);
     margin: .5rem 0 1rem 0;
@@ -82,19 +99,88 @@ body {
     width: calc(100% - 4rem);
 
     & :first-child {
-      margin: 0 .75rem 4px 0;
+      margin: 0 .75rem 0 0;
       width: 15px;
       height: 15px;
+
+      @include tablet {
+        margin: 0 .5rem 0 0;
+      }
     }
 
     @include tablet {
-      width: 200px;
+      width: 6.4375rem;
       margin: 0 1.5rem 0 1.5rem;
     }
 
     @include desktop {
-      width: 200px;
+      width: 6.4375rem;
       margin: 0 1.5rem 0 1.5rem;
+    }
+  }
+}
+
+//Styling for text inputs
+.text-input {
+  @include font-styling(400, $black);
+  box-sizing: border-box;
+  font-family: 'AvenirNext';
+  width: 100%;
+  border: 1px solid $mercury;
+  border-radius: 4px;
+  padding: .75rem;
+  background-color: $alabaster;
+
+  &::placeholder{
+    color: $black;
+  }
+
+  &:focus {
+    outline: none;
+    border: 2px solid $blue;
+  }
+
+  &--comment {
+    resize: none;
+    height: 6.75rem;
+    width: calc(100% - 4.125rem);
+
+    @include tablet {
+      flex-grow: 0;
+      height: 3rem;
+      width: 27.5rem;
+    }
+
+    @include desktop {
+      flex-grow: 0;
+      height: 3rem;
+      width: 25.5rem;
+    }
+  }
+
+  &--search {
+    height: 3rem;
+    width: 100%;
+    padding-left: 2.5rem;
+  }
+
+  &--vid-title {
+    height: 2.5rem;
+    margin: 0 0 1.5rem 0;
+  }
+
+  &--vid-desc {
+    height: 8.9375rem;
+    margin: 0 0 2rem 0;
+    resize: none;
+
+    @include tablet {
+      margin: 0 0 2.25rem 0;
+    }
+
+    @include desktop {
+      height: 6rem;
+      margin: 0 0 2.25rem 0;
     }
   }
 }
@@ -118,11 +204,25 @@ body {
     padding: 0 3.75rem;
   }
 
-  &__logo {
+  &__logo-container {
     height: 3rem;
     width: 100%;
+    flex-grow: 1;
+    padding: .75rem 0;
     box-sizing: border-box;
-    padding: .5rem 0;
+
+    @include tablet {
+      width: auto;
+    }
+
+    @include desktop {
+      width: auto;
+    }
+  }
+  &__logo {
+    height: 100%;
+    width: 100%;
+    
 
     @include tablet {
       width: 7.75rem;
@@ -139,26 +239,11 @@ body {
     width: 100%;
 
     @include tablet {
-      flex-grow: 1;
-      margin-left: 10.5625rem;
+      width: 15.75rem;
     }
 
     @include desktop {
-      flex-grow: 1;
-      margin-left: 31.8125rem;
-    }
-  }
-
-  &__search {
-    height: 3rem;
-    width: 100%;
-    padding-left: 2.5rem;
-    border-radius: 4px;
-    border: 1px solid $mercury;
-
-    &:focus {
-      outline: none;
-      border: 1px solid $blue;
+      width: 15.75rem;
     }
   }
   
