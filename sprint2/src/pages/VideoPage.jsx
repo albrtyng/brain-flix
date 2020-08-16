@@ -55,9 +55,11 @@ class VideoPage extends Component {
   componentDidMount() {
     axios.get(`${API_URL}/videos?api_key=${API_KEY}`)
     .then(response => {
-      const id  = this.props.match.params.id || response.data[0].id; // If we have an id from url, use it. Otherwise, default to first in response array
+      // If we have an id from url, use it. Otherwise, default to first in response array
+      const id  = this.props.match.params.id || response.data[0].id;
 
-      axios.get(`${API_URL}/videos/${id}/?api_key=${API_KEY}`) // Chaining these two requests together prevents one extra render by setting state once
+      // Chaining these two requests together prevents one extra render by setting state once
+      axios.get(`${API_URL}/videos/${id}/?api_key=${API_KEY}`)
       .then(response2 => {
         this.setState({
           videos: response.data,
@@ -95,7 +97,7 @@ class VideoPage extends Component {
               handleSubmit={this.handleSubmit}
             />
           </div>
-          <VideoListComponent videos={videos.filter(video => video.id !== selected.id )}/>
+          <VideoListComponent videos={videos.filter(video => video.id !== selected.id)}/>
         </div>
       </>
     )

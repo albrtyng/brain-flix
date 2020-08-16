@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import '../styles/pages/UploadPage.scss';
+
 import Thumbnail from '../assets/images/video-list-5.jpg';
 
 class UploadPage extends Component {

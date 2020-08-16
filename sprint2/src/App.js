@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import  { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import TitleBarComponent from './components/TitleBarComponent';
+import UnknownLinkComponent from './components/UnknownLinkComponent';
 import UploadPage from './pages/UploadPage';
 import VideoPage from './pages/VideoPage';
 
@@ -18,7 +19,8 @@ class App extends Component {
           <Switch>
             <Route path='/upload' component={UploadPage} />
             <Route path='/videos/:id' component={VideoPage} />
-            <Route exact path='/videos' component={VideoPage} />
+            <Route exact path={['/videos', '/']} component={VideoPage} />
+            <Route default component={UnknownLinkComponent} />
           </Switch>
         </Router>
       </div>

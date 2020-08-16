@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Mohan from '../assets/images/mohan-muruge.jpg';
 
 // The form for submitting comments
-
 class CommmentFormComponent extends Component {
   render () {
     return (

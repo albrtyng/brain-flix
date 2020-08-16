@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 import Logo from '../assets/logo/logo-brainflix.svg';
 import SearchIcon from '../assets/icons/svg/icon-search.svg'
@@ -11,6 +11,7 @@ class TitleBarComponent extends Component {
     return (
       <div className='title-bar'>
 
+        {/* The Brainflix logo that redirects to the vidoes page */}
         <Route render={({ history }) => (
           <div
             className='title-bar__logo-container'
@@ -25,6 +26,7 @@ class TitleBarComponent extends Component {
           </div>
         )} />
 
+        {/* The search bar container for the input and icon */}
         <div className='title-bar__search-container'>
           <img
             className='title-bar__icon'
@@ -38,16 +40,13 @@ class TitleBarComponent extends Component {
           />
         </div>
 
-        <Route render={({ history }) => (
-          <button
-            className='btn btn--upload'
-            onClick={() => history.push('/upload')}
-          >
-            <img src={UploadIcon} alt='The upload icon'/>
-            upload
-          </button>
-        )} />
+        {/* The upload button that redirects to the upload page */}
+        <Link to='/upload' className='btn btn--upload'>
+          <img src={UploadIcon} alt='The upload icon'/>
+          upload
+        </Link>
 
+        {/* The profile picture */}
         <img
           className='title-bar__pfp'
           src={this.props.image}

@@ -45,11 +45,12 @@ class VideoPlayerComponent extends Component {
         </div>
 
         {/* The video */}
-        <video
-          className='player__video'
-          poster={image}
-        >
-        </video>
+        <figure className='player__video'>
+          <video
+            poster={image}
+          ></video>
+        </figure>
+
       </div>
     );
   }
