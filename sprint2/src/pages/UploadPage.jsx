@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import '../styles/pages/UploadPage.scss';
 
-import Thumbnail from '../assets/images/video-list-5.jpg';
+import Thumbnail from '../assets/images/upload-video-preview.jpg';
 
 class UploadPage extends Component {
   render() {
