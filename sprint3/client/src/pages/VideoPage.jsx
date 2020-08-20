@@ -8,8 +8,6 @@ import VideoPlayerComponent from '../components/VideoPlayerComponent';
 
 import '../styles/pages/VideoPage.scss';
 
-import { API_URL, API_KEY } from '../helpers/constants.js';
-
 class VideoPage extends Component {
   state = {
     videos: [],
@@ -25,7 +23,7 @@ class VideoPage extends Component {
     event.target.reset();
 
     axios.post(
-      `${API_URL}/videos/${this.state.selected.id}/comments?api_key=${API_KEY}`,
+      `/videos/${this.state.selected.id}/comments`,
       {
         name: 'Mohan Muruge',
         comment: comment
@@ -39,7 +37,7 @@ class VideoPage extends Component {
   fetchSelectedVideo = () => {
     const id  = this.props.match.params.id || this.state.selected.id;
 
-    axios.get(`${API_URL}/videos/${id}/?api_key=${API_KEY}`)
+    axios.get(`/videos/${id}`)
     .then(response => {
       this.setState(prevState => ({
         ...prevState,
@@ -53,13 +51,13 @@ class VideoPage extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${API_URL}/videos?api_key=${API_KEY}`)
+    axios.get(`/videos`)
     .then(response => {
       // If we have an id from url, use it. Otherwise, default to first in response array
       const id  = this.props.match.params.id || response.data[0].id;
 
       // Chaining these two requests together prevents one extra render by setting state once
-      axios.get(`${API_URL}/videos/${id}/?api_key=${API_KEY}`)
+      axios.get(`/videos/${id}`)
       .then(response2 => {
         this.setState({
           videos: response.data,
@@ -74,7 +72,9 @@ class VideoPage extends Component {
   }
 
   componentDidUpdate(_prevProps, prevState) {
-    if (prevState.selected.id !== this.props.match.params.id) {
+    const { id } = this.props.match.params;
+
+    if (id && prevState.selected.id !== id) {
       this.fetchSelectedVideo();
     }
   }
