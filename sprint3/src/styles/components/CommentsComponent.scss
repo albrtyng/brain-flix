@@ -1,0 +1,158 @@
+@import '../partials/constants';
+@import '../partials/mixins';
+
+/*
+  Styling for the comments form, list and items
+*/
+
+// Styling for the container wrapping the comments
+.comments {
+  box-sizing: border-box;
+  width: 100%;
+
+  &__count {
+    @include font-styling(600, $black);
+    @include format-text(1.375rem, 0 0 2rem 0, 0.875rem);
+  }
+}
+
+// Styling for the comment form
+.com-form {
+  @include flex($fw: wrap, $ai: flex-start, $jc: flex-end, $bx: box-sizing);
+  border-bottom: 1px solid $mercury;
+
+  @include tablet {
+    @include flex($fw: wrap, $ai: flex-start, $bx: box-sizing);
+  }
+
+  @include desktop {
+    @include flex($fw: wrap, $ai: flex-start, $bx: box-sizing);
+  }
+
+  &__pfp {
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    background-color: $mercury;
+    margin: 0 1.125rem 0 0;
+    object-fit: cover;
+  }
+
+  &__label {
+    @include font-styling(600, $silver);
+    @include format-text(1.25rem, 0 0 0 4.125rem, .75rem);
+    width: calc(100% - 4.125rem);
+    flex-grow: 1;
+    text-transform: uppercase;
+    align-self: center;
+  }
+
+  &__comment {
+    @include font-styling(400, $black);
+    font-family: 'AvenirNext';
+    box-sizing: border-box;
+    border-radius: 4px;
+    flex-grow: 1;
+    padding: .75rem;
+    resize: none;
+    border: 1px solid $mercury;
+
+    height: 6.75rem;
+    width: calc(100% - 4.125rem);
+
+    @include tablet {
+      flex-grow: 0;
+      height: 3rem;
+      width: 27.5rem;
+    }
+
+    @include desktop {
+      flex-grow: 0;
+      height: 3rem;
+      width: 25.5rem;
+    }
+
+    &::placeholder {
+      color: $black;
+    }
+
+    &:focus {
+      outline: none;
+      border: 2px solid $blue;
+    }
+  }
+}
+
+// Styling for individual comments
+.comment {
+  @include flex($fw: wrap, $bx: box-sizing);
+  width: 100%;
+  border-bottom: 1px solid $mercury;
+  padding: 1.5rem 0;
+
+  @include tablet {
+    @include flex($fw: wrap, $bx: box-sizing);
+  }
+
+  @include desktop {
+    @include flex($fw: wrap, $bx: box-sizing);
+  }
+
+  &__pfp {
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: $mercury;
+    display: inline-block;
+    margin-right: 0.875rem;
+    object-fit: cover;
+  }
+
+  &__author {
+    @include font-styling(600, $black);
+    @include format-text(1.375rem, 0 1rem 0 0, 0.875rem);
+    display: inline-block;
+
+    @include tablet {
+      @include format-text(1.5rem, 0 1rem 0 0);
+    }
+
+    @include desktop {
+      @include format-text(1.5rem, 0 1rem 0 0);
+    }
+  }
+
+  &__timestamp {
+    @include font-styling(400, $silver);
+    @include format-text($lh: 1.375rem, $fs: 0.875rem);
+    display: inline-block;
+    flex-grow: 1;
+    text-align: right;
+
+    @include tablet {
+      @include format-text(1.5rem, 0 1rem 0 0);
+      text-align: left;
+    }
+
+    @include desktop {
+      @include format-text(1.5rem, 0 1rem 0 0);
+      text-align: left;
+    }
+  }
+
+  &__text {
+    @include font-styling(400, $black);
+    @include format-text(1.125rem, 0 0 0 3.5rem, 0.8125rem);
+    width: calc(100% - 3.4375rem);
+
+    @include tablet {
+      @include format-text(1.375rem, 0 0 0 3.5rem, 0.875rem);
+      padding-right: calc(100% - 39rem);
+    }
+
+    @include desktop {
+      @include format-text(1.375rem, 0 0 0 3.5rem, 0.875rem);
+      padding-right: calc(100% - 39rem);
+    }
+  }
+}

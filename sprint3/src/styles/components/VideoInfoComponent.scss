@@ -1,0 +1,126 @@
+@import '../partials/constants';
+@import '../partials/mixins';
+
+/*
+  Styling for the video info component
+*/
+
+.video-info {
+  @include flex($fw: wrap, $jc: space-between, $bx: border-box);
+  width: 100%;
+  padding: 2rem 0 2.5rem 0;
+
+  @include tablet {
+    padding: 3rem 0 4rem 0;
+  }
+
+  @include desktop {
+    padding: 3rem 0 1.5rem 0;
+  }
+
+  &__title {
+    @include font-styling(700, $black);
+    @include format-text($lh: 2rem, $fs: 1.5rem);
+
+    @include tablet {
+      @include format-text($lh: 2.75rem, $fs: 1.5rem);
+    }
+
+    @include desktop {
+      @include format-text($lh: 2.75rem, $fs: 2.25rem);
+    }
+
+    width: 100%;
+  }
+
+  &__second-row {
+    @include flex();
+    width: 100%;
+
+    @include tablet {
+      width: 50%;
+    }
+
+    @include desktop {
+      width: 50%;
+    }
+  }
+
+  &__third-row {
+    @include flex();
+    width: 100%;
+
+    @include tablet {
+      @include flex($jc: flex-end);
+      width: 50%;
+    }
+
+    @include desktop {
+      @include flex($jc: flex-end);
+      width: 50%;
+    }
+  }
+
+  &__channel {
+    @include font-styling(600, $black);
+  }
+  &__timestamp {
+    @include font-styling(400, $silver);
+  }
+  &__channel, &__timestamp {
+    @include format-text(1.125rem, 0rem 2rem 1.5rem 0, .8125rem);
+    align-self: center;
+
+    @include tablet {
+      margin: 1.5rem .5rem 1.5rem 0;
+    }
+
+    @include desktop {
+      margin: 1.5rem .5rem 1.5rem 0;
+    }
+  }
+
+  &__icon {
+    margin: 0 .5rem 1.5rem 0;
+
+    @include tablet {
+      margin: 0 .5rem 0 0;
+    }
+
+    @include desktop {
+      margin: 0 .5rem 0 0;
+    }
+  }
+
+  &__count {
+    @include font-styling(400, $black);
+    @include format-text(1.125rem, 0 2rem 1.5rem 0, 0.8125rem);
+
+    @include tablet {
+      margin: 0 1.5rem 0 0;
+      align-self: center;
+    }
+
+    @include desktop {
+      margin: 0 1.5rem 0 0;
+      align-self: center;
+    }
+  }
+
+  &__desc {
+    @include font-styling(400, $black);
+    @include format-text($lh: 1.125rem, $fs: 0.8125rem);
+    padding: 1.5rem 0 0 0;
+    border-top: 1px solid $mercury;
+    width: 100%;
+
+    @include tablet {
+      @include format-text($lh: 1.375rem, $fs: 0.875rem);
+    }
+
+    @include desktop {
+      @include format-text($lh: 1.375rem, $fs: 0.875rem);
+      padding-right: 10rem;
+    }
+  }
+}
