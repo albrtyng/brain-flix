@@ -47,7 +47,7 @@ class VideoPage extends Component {
   }
 
   fetchSelectedVideo = () => {
-    const id  = this.props.match.params.id || this.state.selected.id;
+    const id  = this.props.match.params.id || this.state.videos[0].id;
 
     axios.get(`/videos/${id}`)
     .then(response => {
@@ -84,10 +84,11 @@ class VideoPage extends Component {
     })
   }
 
-  componentDidUpdate(_prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     const { id } = this.props.match.params;
 
-    if (id && prevState.selected.id !== id) {
+    if ((id && prevState.selected.id !== id)
+      || prevProps.match.params.id !== id) {
       this.fetchSelectedVideo();
     }
   }
