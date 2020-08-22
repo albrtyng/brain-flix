@@ -75,7 +75,8 @@ class VideoPage extends Component {
         this.setState({
           videos: response.data,
           selected: response2.data,
-          comments: response2.data.comments
+          comments: response2.data.comments,
+          liked: response.data.liked
         })
       })
     })
