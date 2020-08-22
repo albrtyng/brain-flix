@@ -51,12 +51,12 @@
     width: 100%;
 
     @include tablet {
-      @include flex($jc: flex-end);
+      @include flex($ai: center, $jc: flex-end);
       width: 50%;
     }
 
     @include desktop {
-      @include flex($jc: flex-end);
+      @include flex($ai: center, $jc: flex-end);
       width: 50%;
     }
   }
@@ -81,8 +81,10 @@
   }
 
   &__icon {
+    height: 16px;
+    width: auto;
     margin: 0 .5rem 1.5rem 0;
-
+    
     @include tablet {
       margin: 0 .5rem 0 0;
     }

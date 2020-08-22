@@ -57,15 +57,35 @@ router.post('/videos/:id/comments', (req, res) => {
 });
 
 router.post('/videos', (req, res) => {
-  videos.push({
-    ...req.body,
+  const date = new Date();
+  const newVideo = {
+    ...req.body, //title, channel, description, image
     id: uuidv4(),
     views: 0,
     likes: 0,
-    duration: '0:00',
-    timestamp: new Date().getTime(),
+    duration: '0:20',
+    timestamp: date.getTime(),
+    video: '../assets/video/brainstation-sample-video.mp4',
     comments: []
-  })
+  }
+
+  videos.push(newVideo);
+
+  return res.json(newVideo);
+})
+
+router.put('/videos/:id/like', (req, res) => {
+  const { id } = req.params;
+  const video = videos.find(video => video.id === id);
+
+  if (!video.liked) {
+    video.likes += 1;
+  } else {
+    video.likes -= 1;
+  }
+
+  video.liked = !video.liked;
+  return res.status(200).send();
 })
 
 module.exports = router

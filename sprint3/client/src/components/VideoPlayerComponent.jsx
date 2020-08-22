@@ -11,7 +11,8 @@ class VideoPlayerComponent extends Component {
   render() {
     const {
       duration,
-      image
+      image,
+      video
     } = this.props.video;
 
     return (
@@ -47,10 +48,18 @@ class VideoPlayerComponent extends Component {
         {/* The video */}
         <figure className='player__video'>
           <video
-            poster={image}
+            poster={image ?
+              (image.startsWith('https://')
+                ? image
+                : require('../assets/images/upload-video-preview.jpg'))
+              : null }
+            src={video ?
+              (video.startsWith("https://")
+                ? null
+                : require('../assets/video/brainstation-sample-video.mp4')
+              ) : null}
           ></video>
         </figure>
-
       </div>
     );
   }

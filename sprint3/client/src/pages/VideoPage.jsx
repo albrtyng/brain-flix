@@ -12,7 +12,8 @@ class VideoPage extends Component {
   state = {
     videos: [],
     selected: {},
-    comments: []
+    comments: [],
+    liked: false
   }
 
   handleSubmit = (event) => {
@@ -30,6 +31,17 @@ class VideoPage extends Component {
       }
     )
     .then(response => {
+      this.fetchSelectedVideo(false);
+    })
+  }
+
+  handleLike = (event) => {
+    event.preventDefault();
+
+    axios.put(
+      `/videos/${this.state.selected.id}/like`, {}
+    )
+    .then(response => {
       this.fetchSelectedVideo();
     })
   }
@@ -42,7 +54,8 @@ class VideoPage extends Component {
       this.setState(prevState => ({
         ...prevState,
         selected: response.data,
-        comments: response.data.comments
+        comments: response.data.comments,
+        liked: response.data.liked
       }))
     })
     .catch(err => {
@@ -84,6 +97,7 @@ class VideoPage extends Component {
       videos,
       selected,
       comments,
+      liked
     } = this.state;
 
     return (
@@ -91,7 +105,11 @@ class VideoPage extends Component {
         <VideoPlayerComponent video={selected}/>
         <div className='video__container'>
           <div className='video__left'>
-            <VideoInfoComponent video={selected}/>
+            <VideoInfoComponent
+              video={selected}
+              handleLike={this.handleLike}
+              liked={liked}
+            />
             <CommentsComponent
               comments={comments.sort((a,b) => b.timestamp - a.timestamp)}
               handleSubmit={this.handleSubmit}
