@@ -19,12 +19,14 @@ class VideoPlayerComponent extends Component {
   scrubberRef = createRef();
 
   componentDidMount() {
-    setInterval(() => this.getCurrentVideoTime(), 10);
-    setInterval(() => {
+    this.currentVideoTimeInterval = setInterval(() => this.getCurrentVideoTime(), 10);
+    this.videoLengthInterval = setInterval(() => {
       if (this.state.videoLength === null) {
-        const { duration } = this.videoRef.current;
-        if (duration) {
-          this.setState({videoLength: duration.toFixed()})
+        if (this.videoRef.current) {
+          const { duration } = this.videoRef.current;
+          if (duration) {
+            this.setState({videoLength: duration.toFixed()})
+          }
         }
       }
     }, 250)
@@ -35,6 +37,15 @@ class VideoPlayerComponent extends Component {
       && !this.state.paused) {
       this.setState({ paused: true });
     }
+
+    if (this.state.videoLength !== null) {
+      clearInterval(this.videoLengthInterval);
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.currentVideoTimeInterval);
+    clearInterval(this.videoLengthInterval);
   }
 
   handleScrubberChange() {
