@@ -104,7 +104,7 @@ class VideoPage extends Component {
 
     return (
       <>
-        <VideoPlayerComponent video={selected}/>
+        <VideoPlayerComponent video={selected} {...this.props}/>
         <div className='video__container'>
           <div className='video__left'>
             <VideoInfoComponent
