@@ -17,7 +17,11 @@ class VideoListItemComponent extends Component {
         {/* The video thumbnail */}
         <img
           className='video-item__img'
-          src={image}
+          src={image ?
+            (image.startsWith('https://')
+              ? image
+              : require('../assets/images/upload-video-preview.jpg'))
+            : ''}
           alt='The video thumbnail' />
 
         {/* The video details */}

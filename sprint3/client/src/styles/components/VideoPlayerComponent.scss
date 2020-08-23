@@ -81,20 +81,11 @@
       & :first-child {
         flex-grow: 1;
         height: 5px;
+        width: 50%;
       }
 
-      & :first-child[value] {
-        appearance: none;
-      }
-
-      & :first-child[value]::-webkit-progress-bar {
-        border-radius: 2.5px;
-        background-color: black;
-      }
-
-      & :first-child[value]::-webkit-progress-value {
-        border-radius: 2.5px;
-        background-color: $blue;
+      & :first-child::-webkit-slider-thumb {
+        cursor: pointer;
       }
     }
 

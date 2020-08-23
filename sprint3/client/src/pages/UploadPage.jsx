@@ -7,10 +7,7 @@ import '../styles/pages/UploadPage.scss';
 import Thumbnail from '../assets/images/upload-video-preview.jpg';
 
 class UploadPage extends Component {
-  constructor(props) {
-    super(props);
-    this.formRef = createRef();
-  }
+  formRef = createRef();
 
   handleUpload = (event) => {
     event.preventDefault();
